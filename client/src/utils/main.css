@@ -153,6 +153,11 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.page-container {
+  display: flex;
+  min-height: 84vh;
+}
+
 .sign-in-button {
   display: block;
   width: 100%;
