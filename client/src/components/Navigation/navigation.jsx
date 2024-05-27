@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SignStatus from "../SignStatus/signStatus";
 
 function Navigation() {
   return (
@@ -11,11 +12,7 @@ function Navigation() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div>
-        <Link className="main-nav-item" to={"/sign"}>
-          <i className="fa fa-user-circle"></i> Sign In
-        </Link>
-      </div>
+      <SignStatus />
     </nav>
   );
 }
