@@ -1,8 +1,21 @@
 import Footer from "../../components/Footer/footer";
 import Navigation from "../../components/Navigation/navigation";
 import Account from "../../components/Account/account";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import UserHeader from "../../components/UserHeader/userHeader";
 
 function User() {
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.login);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token]);
+
   const accountContent = [
     {
       id: 1,
@@ -29,14 +42,7 @@ function User() {
       <Navigation />
       <main className="page-container">
         <div className="main bg-dark">
-          <div className="header">
-            <h1>
-              Welcome back
-              <br />
-              Tony Jarvis!
-            </h1>
-            <button className="edit-button">Edit Name</button>
-          </div>
+          <UserHeader />
           <h2 className="sr-only">Accounts</h2>
           {accountContent.map((account) => (
             <Account
