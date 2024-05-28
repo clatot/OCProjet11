@@ -3,10 +3,12 @@ import axios from "axios";
 
 const API_URL = "http://localhost:3001/api/v1";
 
+const initialToken = sessionStorage.getItem("authToken");
+
 const loginSlice = createSlice({
   name: "login",
   initialState: {
-    token: null,
+    token: initialToken ? initialToken : null,
     loading: false,
     error: null,
   },
@@ -19,6 +21,7 @@ const loginSlice = createSlice({
     loginSuccess: (state, action) => {
       state.loading = false;
       state.token = action.payload.body.token;
+      sessionStorage.setItem("authToken", action.payload.body.token);
       console.log("Success");
     },
     loginFailure: (state, action) => {
@@ -28,6 +31,7 @@ const loginSlice = createSlice({
     },
     logout: (state) => {
       state.token = null;
+      sessionStorage.removeItem("authToken");
       console.log("logout");
     },
   },
