@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginPost } from "../../Store/loginSlice";
-import { profilePost } from "../../Store/profileSlice";
 import { useNavigate } from "react-router-dom";
 
 function Form() {
@@ -23,7 +22,6 @@ function Form() {
 
   useEffect(() => {
     if (token) {
-      dispatch(profilePost(token));
       navigate("/user");
     }
   }, [token]);

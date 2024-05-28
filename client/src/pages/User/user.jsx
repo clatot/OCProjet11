@@ -2,16 +2,20 @@ import Footer from "../../components/Footer/footer";
 import Navigation from "../../components/Navigation/navigation";
 import Account from "../../components/Account/account";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import UserHeader from "../../components/UserHeader/userHeader";
+import { profilePost } from "../../Store/profileSlice";
 
 function User() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => state.login);
 
   useEffect(() => {
-    if (!token) {
+    if (token) {
+      dispatch(profilePost(token));
+    } else {
       navigate("/");
     }
   }, [token]);
