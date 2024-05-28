@@ -23,10 +23,12 @@ function UserHeader() {
   }
 
   return editMode ? (
-    <>
-      <form action="">
+    <div className="header">
+      <form className="edit-form" action="">
         <div className="input-wrapper">
-          <label htmlFor="username">Username</label>
+          <label className="edit-label" htmlFor="username">
+            Username
+          </label>
           <input
             type="text"
             id="username"
@@ -41,7 +43,7 @@ function UserHeader() {
           Cancel
         </button>
       </form>
-    </>
+    </div>
   ) : (
     <div className="header">
       <h1>
